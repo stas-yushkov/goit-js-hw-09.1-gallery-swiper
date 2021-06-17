@@ -1,1 +1,1 @@
-# goit-js-hw-09.1-gallery-swiper
+подключаю swiper

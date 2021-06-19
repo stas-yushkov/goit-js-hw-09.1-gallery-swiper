@@ -1,4 +1,15 @@
 .swiper-container {
-  width: 95vw;
+  width: 100vw;
+  height: 100vh;
   // height: auto;
+  // margin: auto;
+  // display: block;
+  // width: auto;
+  // max-height: 100vh;
+  // max-width: 100vw;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
 }

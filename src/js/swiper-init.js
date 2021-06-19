@@ -1,4 +1,3 @@
-// import Swiper bundle with all modules installed
 import Swiper from 'swiper';
 
 import { galleryItems } from './app';
@@ -15,27 +14,8 @@ const swiperItemsMarkup = galleryItems
 `;
   })
   .join('');
-// callbackfn: (value: { preview: string; original: string; description: string; }, index: number, array: { preview: string; original: string; description: string; }[]) => any, thisArg?: any): any[]
 swiperWrapper.insertAdjacentHTML('beforeend', swiperItemsMarkup);
 
 export const swiper = new Swiper('.swiper-container', {
-  // Optional parameters
-  // direction: 'vertical',
   loop: true,
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  // // And if we need scrollbar
-  // scrollbar: {
-  //   el: '.swiper-scrollbar',
-  // },
 });

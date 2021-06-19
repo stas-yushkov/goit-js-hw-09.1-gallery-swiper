@@ -3,6 +3,11 @@ import './sass/main.scss';
 import { galleryItems } from './js/app';
 // console.dir(data.galleryItems);
 import { galleryItemsMarkup } from './js/gallery-items-markup';
+// import Swiper bundle with all modules installed
+import Swiper from 'swiper/bundle';
+// import Swiper styles
+import 'swiper/swiper-bundle.css';
+import { swiper } from './js/swiper-init';
 
 const galleryRef = document.querySelector('.js-gallery');
 const lightboxRef = document.querySelector('.js-lightbox');
@@ -22,20 +27,26 @@ function onGalleryClick(e) {
   e.preventDefault();
   // console.log(e.currentTarget);
   // console.log(e.target.dataset.index);
-  const originalImgSrc = e.target.dataset.source;
+  // const originalImgSrc = e.target.dataset.source;
   // console.log(originalImgSrc);
   currentImageIndex = Number(e.target.dataset.index);
 
   // Открытие модального окна по клику на элементе галереи.
   lightboxRef.classList.add('is-open');
 
-  // Подмена значения атрибута src элемента img.lightbox__image.
-  lightbox__imageRef.src = originalImgSrc;
+  // // Подмена значения атрибута src элемента img.lightbox__image.
+  // lightbox__imageRef.src = originalImgSrc;
 
   lightboxRef.addEventListener('click', onlightboxRefClick);
   window.addEventListener('keydown', onEscBtnKeydown);
 
   window.addEventListener('keydown', onArrowBtnKeydown);
+
+  // console.log(swiper.activeIndex);
+  // swiper.activeIndex = currentImageIndex;
+  // console.log(swiper.activeIndex);
+  swiper.slideTo(currentImageIndex + 1, 0, false);
+  // console.log(swiper.activeIndex);
 }
 
 function onlightboxRefClick(e) {
@@ -86,50 +97,15 @@ function onArrowBtnKeydown(e) {
   // console.log('🚀 ~ onArrowBtnKeydown ~ currentImageIndex', currentImageIndex);
 
   if (isFlipLeft) {
-    currentImageIndex -= 1;
-    if (currentImageIndex < 0) {
-      currentImageIndex = galleryItems.length - 1;
-    }
+    swiper.slidePrev();
   }
 
   if (isFlipRight) {
-    currentImageIndex += 1;
-    if (currentImageIndex > galleryItems.length - 1) {
-      currentImageIndex = 0;
-    }
+    swiper.slideNext();
   }
-  const newOriginalImageSrc = galleryItems[currentImageIndex].original;
-  const newImageDescr = galleryItems[currentImageIndex].description;
-  lightbox__imageRef.src = newOriginalImageSrc;
-  lightbox__imageRef.alt = newImageDescr;
+  // const newOriginalImageSrc = galleryItems[currentImageIndex].original;
+  // const newImageDescr = galleryItems[currentImageIndex].description;
+  // lightbox__imageRef.src = newOriginalImageSrc;
+  // lightbox__imageRef.alt = newImageDescr;
   // console.log('🚀 ~ onArrowBtnKeydown ~ currentImageIndex', currentImageIndex);
 }
-
-// let currentImageIndex = 0;
-// console.log(e);
-// console.log(e.target);
-// console.log(e.target.firstElementChild);
-// console.log(e.target.firstElementChild.dataset);
-// console.log(e.target.firstElementChild.dataset.index);
-
-// console.log('🚀 ~ onArrowBtnKeydown ~ currentImageIndex', currentImageIndex);
-// const targetImageIndex = e.target.firstElementChild.dataset.index;
-// console.log('🚀 ~ onArrowBtnKeydown ~ currentImageIndex', targetImageIndex);
-
-// const leftImageIndex = currentImageIndex - 1;
-// const leftOriginalImageSrc = galleryItems[leftImageIndex].original;
-// lightbox__imageRef.src = leftOriginalImageSrc;
-// currentImageIndex = leftImageIndex;
-// console.log(
-//   '🚀 ~ onArrowBtnKeydown ~ currentImageIndex',
-//   currentImageIndex,
-// );
-
-// console.log('🚀 ~ onArrowBtnKeydown ~ leftImageIndex', leftImageIndex);
-
-// console.log(
-//   '🚀 ~ onArrowBtnKeydown ~  leftOriginalImageSrc',
-//   leftOriginalImageSrc,
-// );
-// const originalImgSrc = e.target.dataset.source;
-// lightbox__imageRef.src = originalImgSrc;

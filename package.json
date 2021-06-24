@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-09.1-gallery-swiper/",
+    "netlifyBuild": "parcel build src/*.html --public-url /60d4ea0eba54676e8ad3ba38--upbeat-kare-6b4d62.netlify.app/",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
